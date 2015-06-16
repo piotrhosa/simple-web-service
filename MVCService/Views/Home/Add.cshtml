@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<fieldset>
+
+    @using (Ajax.BeginForm("AddNewAnimal", "Add",
+                            new AjaxOptions { UpdateTargetId = "addAnimal" }))
+    {
+        <p>
+
+            @Html.Label("Name :")
+            @Html.TextBox("name")
+            <br>
+            @Html.Label("Type :")
+            @Html.TextBox("type")
+            <br>
+            @Html.Label("Age :")
+            @Html.TextBox("age")
+
+        </p>
+        <button>Add new animal</button>
+        <div id="addAnimal"></div>
+    }
+</fieldset>

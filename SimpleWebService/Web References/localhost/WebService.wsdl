@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://int.scottlogic.co.uk/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://int.scottlogic.co.uk/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://int.scottlogic.co.uk/">
+      <s:element name="Welcome">
+        <s:complexType />
+      </s:element>
+      <s:element name="WelcomeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WelcomeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoCoolStuff">
+        <s:complexType />
+      </s:element>
+      <s:element name="DoCoolStuffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoCoolStuffResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoSomeCalculation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoSomeCalculationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoSomeCalculationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectStringsLargerThan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="minLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectStringsLargerThanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectStringsLargerThanResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WelcomeSoapIn">
+    <wsdl:part name="parameters" element="tns:Welcome" />
+  </wsdl:message>
+  <wsdl:message name="WelcomeSoapOut">
+    <wsdl:part name="parameters" element="tns:WelcomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoCoolStuffSoapIn">
+    <wsdl:part name="parameters" element="tns:DoCoolStuff" />
+  </wsdl:message>
+  <wsdl:message name="DoCoolStuffSoapOut">
+    <wsdl:part name="parameters" element="tns:DoCoolStuffResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSomeCalculationSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSomeCalculation" />
+  </wsdl:message>
+  <wsdl:message name="DoSomeCalculationSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSomeCalculationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectStringsLargerThanSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectStringsLargerThan" />
+  </wsdl:message>
+  <wsdl:message name="SelectStringsLargerThanSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectStringsLargerThanResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="Welcome">
+      <wsdl:input message="tns:WelcomeSoapIn" />
+      <wsdl:output message="tns:WelcomeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoCoolStuff">
+      <wsdl:input message="tns:DoCoolStuffSoapIn" />
+      <wsdl:output message="tns:DoCoolStuffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSomeCalculation">
+      <wsdl:input message="tns:DoSomeCalculationSoapIn" />
+      <wsdl:output message="tns:DoSomeCalculationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectStringsLargerThan">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Selects string from a collection.</wsdl:documentation>
+      <wsdl:input message="tns:SelectStringsLargerThanSoapIn" />
+      <wsdl:output message="tns:SelectStringsLargerThanSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Welcome">
+      <soap:operation soapAction="https://int.scottlogic.co.uk/Welcome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoCoolStuff">
+      <soap:operation soapAction="https://int.scottlogic.co.uk/DoCoolStuff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSomeCalculation">
+      <soap:operation soapAction="https://int.scottlogic.co.uk/DoSomeCalculation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectStringsLargerThan">
+      <soap:operation soapAction="https://int.scottlogic.co.uk/SelectStringsLargerThan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Welcome">
+      <soap12:operation soapAction="https://int.scottlogic.co.uk/Welcome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoCoolStuff">
+      <soap12:operation soapAction="https://int.scottlogic.co.uk/DoCoolStuff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSomeCalculation">
+      <soap12:operation soapAction="https://int.scottlogic.co.uk/DoSomeCalculation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectStringsLargerThan">
+      <soap12:operation soapAction="https://int.scottlogic.co.uk/SelectStringsLargerThan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:49716/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:49716/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

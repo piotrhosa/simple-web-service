@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Animals]
+(
+	[Id] INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    [Name] NCHAR(10) NOT NULL, 
+    [Type] NCHAR(10) NOT NULL, 
+    [Age] TINYINT NOT NULL
+)

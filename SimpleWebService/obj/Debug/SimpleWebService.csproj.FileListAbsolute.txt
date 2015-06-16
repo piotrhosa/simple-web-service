@@ -1,0 +1,14 @@
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\obj\Debug\SimpleWebService.csprojResolveAssemblyReference.cache
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\bin\SimpleWebService.dll.config
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\bin\SimpleWebService.dll
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\bin\SimpleWebService.pdb
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\obj\Debug\SimpleWebService.dll
+c:\users\phosa\documents\visual studio 2013\Projects\SimpleWebService\SimpleWebService\obj\Debug\SimpleWebService.pdb
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\Newtonsoft.Json.dll
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Net.Http.Formatting.dll
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Web.Http.dll
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Web.Http.WebHost.dll
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\Newtonsoft.Json.xml
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Net.Http.Formatting.xml
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Web.Http.xml
+C:\Users\phosa\Documents\Visual Studio 2013\Projects\SimpleWebService\SimpleWebService\bin\System.Web.Http.WebHost.xml

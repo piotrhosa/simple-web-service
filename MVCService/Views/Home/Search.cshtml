@@ -1,0 +1,32 @@
+﻿@model MVCService.Models.Animals
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@{
+    ViewBag.Title = "Search";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@{
+    //@Html.Label(Model.AnimalHtmlList);
+}
+
+<fieldset>
+
+   @using (Ajax.BeginForm("GetAnimalNamesLongerThan", "Animal",
+                            new AjaxOptions { UpdateTargetId = "searchAnimals" }))
+    {
+        <p>
+
+            @Html.Label("Minimum number of characters in name :")
+            @Html.TextBox("minLength")
+
+        </p>
+        <button>Search</button>
+        <div id="searchAnimals"></div>
+    }
+</fieldset>
