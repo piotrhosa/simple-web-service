@@ -21,6 +21,14 @@ namespace MVCService.Models
         public string Type { get; set; }
         public int Age { get; set; }
 
+        public Animal()
+        {
+            Id = 0;
+            Name = "";
+            Type = "";
+            Age = 0;
+        }
+
         public Animal(string name, string type, int age)
         {
             Id = 2;
@@ -29,7 +37,7 @@ namespace MVCService.Models
             Age = age;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder outputString = new StringBuilder("", 100);
 

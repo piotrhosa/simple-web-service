@@ -12,20 +12,25 @@ namespace MVCService.Controllers
 {
     public class AnimalController : Controller
     {
-        public List<string> animals = new List<string> { "ox", "cat", "caterpillar", "hippopotamus" };
-
-        public List<string> GetAllAnimals()
+        public List<Animal> animals = new List<Animal> 
+        { 
+            new Animal("Dan", "Dog", 2),
+            new Animal("Don", "Badger", 4),
+            new Animal("Ben", "Crow", 1)
+        };
+    
+        public List<Animal> GetAllAnimals()
         {
             return animals;
         }
 
-        public List<string> CreateNewList(int minLength)
+        public List<Animal> CreateNewList(int minLength)
         {
-            List<string> retAnimals = new List<string>(animals.Count);
+            List<Animal> retAnimals = new List<Animal>(animals.Count);
 
-            var lenQuery = from a in animals where a.Length >= minLength select a;
+            var lenQuery = from a in animals where a.Name.Length >= minLength select a;
 
-            foreach (string a in lenQuery)
+            foreach (Animal a in lenQuery)
                 retAnimals.Add(a);
 
             return retAnimals;
@@ -34,11 +39,23 @@ namespace MVCService.Controllers
         [System.Web.Mvc.HttpPost]
         public ActionResult GetAnimalNamesLongerThan()
         {
+
             int minLength = Convert.ToInt32(Request["minLength"].ToString());
 
-            List<string> queryList = (List<string>)CreateNewList(minLength);
+            //var db = new DatabaseEntities();
+            //var allAnimals = db.Animals.ToList();
+            //List<Animal> selectedAnimals = new List<Animal>(100);
 
-            return Content((new Animals(queryList)).AnimalHtmlList);
+            //foreach(var a in allAnimals)
+            //{
+            //    if (a.Name.Length > minLength)
+            //        selectedAnimals.Add(a);
+            //}
+
+            DatabaseEntities db = new DatabaseEntities();
+            var selectedAnimals = (from a in db.Animals where a.Name.Length > minLength select a).ToList();
+
+            return View(selectedAnimals);
         }
 
     }

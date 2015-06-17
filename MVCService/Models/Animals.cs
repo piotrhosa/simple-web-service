@@ -8,22 +8,22 @@ namespace MVCService.Models
 {
     public class Animals
     {
-        public List<string> AnimalList { get; set; }
+        public List<Animal> AnimalList { get; set; }
         public string AnimalHtmlList { get; set;  }
 
-        public Animals(List<string> animalList) 
+        public Animals(List<Animal> animalList) 
         {
             AnimalList = animalList;
             AnimalHtmlList = ToHtml(AnimalList);
         }
 
-        private string ToHtml(List<string> animalList)
+        private string ToHtml(List<Animal> animalList)
         {
             StringBuilder outputString = new StringBuilder("", 100);
 
-            foreach (string a in animalList)
+            foreach (Animal a in animalList)
             {
-                outputString.Append(a);
+                outputString.Append(a.Name);
                 outputString.Append("<br>");
             }
 

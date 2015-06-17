@@ -17,7 +17,7 @@ namespace MVCService.Controllers
         public ActionResult Search()
         {
             ViewBag.Message = "Here you can search animals by name length.";
-            return View();
+            return View(new List<Animal> { new Animal("Danny", "Giraffe", 2) });
         }
 
         //private WebServicesDbEntities1 db = new WebServicesDbEntities1();
@@ -25,8 +25,12 @@ namespace MVCService.Controllers
         public ActionResult Add()
         {
             ViewBag.Message = "You can add a new animal to the family here.";
-            //return View(db.Animal.ToList());
-            return View();
+            using (var db = new DatabaseEntities())
+            {
+                return View(db.Animals.ToList());
+            }
+
+            //return View();
         }
     }
 }

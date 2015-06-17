@@ -11,12 +11,9 @@ namespace MVCService.Controllers
 {
     public class AddController : Controller
     {
-        private DatabaseEntities db = new DatabaseEntities();
+        //private DatabaseEntities db = new DatabaseEntities();
 
-        private void AddAnimalToDatabase(Animal animal) {
-
-        }
-
+        [System.Web.Mvc.HttpPost]
         public ActionResult AddNewAnimal()
         {
             string name = Request["name"].ToString();
@@ -25,24 +22,26 @@ namespace MVCService.Controllers
 
             Animal newAnimal = new Animal(name, type, age);
 
-            db.Animals.Add(newAnimal);
+            DatabaseEntities db = new DatabaseEntities();
 
             try
             {
+                db.Animals.Add(newAnimal);
                 db.SaveChanges();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                db.SaveChanges();
+                return View("Error writing to database: " + e.ToString());
             }
 
-            //OperationDataContext context
-            //This would need System.Data.Linq to be added.
+            //This is how you can remove entries from the database.
+            //Animal entryToBeDeleted = db.Animals.First(x => x.Name == "Mama");
+            //db.Animals.Remove(entryToBeDeleted);
+            //db.SaveChanges();
 
-            return Content(newAnimal.ToString());
+            //This is to refresh the page so that the table reloads from database
+            return RedirectToAction("Add", "Home");
+            
         }
-
-
     }
 }
