@@ -16,8 +16,9 @@ namespace MVCService.Controllers
 
         public ActionResult Search()
         {
-            ViewBag.Message = "Here you can search animals by name length.";
-            return View(new List<Animal> { new Animal("Danny", "Giraffe", 2) });
+            ViewBag.Message = "Here you can search animals by type length.";
+            //return View(new List<Animal> { new Animal("Danny", "Giraffe", 2) });
+            return View(new List<Animal>());
         }
 
         //private WebServicesDbEntities1 db = new WebServicesDbEntities1();

@@ -23,7 +23,7 @@ namespace MVCService.Models
 
             foreach (Animal a in animalList)
             {
-                outputString.Append(a.Name);
+                outputString.Append(a.Type);
                 outputString.Append("<br>");
             }
 
